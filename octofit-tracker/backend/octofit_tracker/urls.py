@@ -18,6 +18,7 @@ import os
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from . import views
 
@@ -29,6 +30,7 @@ router.register(r'workouts', views.WorkoutViewSet)
 router.register(r'leaderboard', views.LeaderboardViewSet)
 
 
+@api_view(['GET'])
 def api_root(request):
     codespace_name = os.getenv('CODESPACE_NAME')
     if codespace_name:
